@@ -1,0 +1,56 @@
+#One_Line_memory_Game
+print(">>>>>..One_Line_memory_Game..<<<<<")
+from random import *
+from random import randint
+import random
+player1 =input('Enter Player1 Name: ')
+player2 =input('Enter Player2 Name: ')
+Game_cards=[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0]
+print(Game_cards)
+alpha=["A","A","B","B","C","C","D","D","G","G","K","K","L","L","O","O","S","S","Z","Z"]
+arr=["*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*","*"]
+r=["","","","","","","","","","","","","","","","","","","",""]
+i=1
+t=0
+score_P1=0
+score_P2=0
+go=bool (True)
+def draw():
+  print(*Game_cards,sep="")
+while(len(alpha)!=0):
+  Z=str(random.choice(list(alpha)))
+  r[t]=Z
+  alpha.remove(Z)
+  t+=1
+while (Game_cards!=arr):
+   if i%2==1:
+    x=int(input("Enter number between 0 to 19:"))
+    y=int(input("Enter number between 0 to 19:"))
+    print (player1,":",x,",",y)
+    print (r[x],r[y])
+    if r[x]==r[y]:
+      Game_cards[x]=Game_cards[y]="*"
+      score_P1=score_P1+1
+    print("score","'",player1,"'","=",score_P1)
+    i+=1 
+    draw()
+    
+    if i%2==0:
+        x=int(input("input number between 0 to 19:"))
+        y=int(input("input number between 0 to 19"))
+        print (player2,":",x,",",y)
+        print (r[x],r[y])
+        if r[x]==r[y]:
+         Game_cards[x]=Game_cards[y]="*"
+         score_P2+=1
+        print("score","'",player2,"'","=",score_P2)
+    i+=1
+    draw()
+if score_P2<score_P1:
+      print(player2,"is","Winner")
+      print("Congratulation")
+      print(player1,"GOOD LUCK")
+else:
+      print(player1,"is","Winner")
+      print("Congratulation")
+      print(player2,"GOOD LUCK")
